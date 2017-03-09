@@ -1,0 +1,30 @@
+@model IEnumerable<MusicApp2017.Models.Artist>
+    @{
+        ViewData["Title"] = "Artists";
+    }
+    <h2>Artist List</h2>
+
+    <button type="button" class="btn btn-primary" onclick="window.location.href='/Artists/Create'"><h5>Create an Artist</h5></button>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Bio</th>
+            </tr>
+        </thead>
+        @foreach (var artist in Model)
+        {
+            <tr>
+                <td>@artist.Name</td>
+                <td>@artist.Bio</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@artist.ArtistID"><button class="btn btn-default">Edit</button></a>
+                    <a asp-action="Details" asp-route-id="@artist.ArtistID"><button class="btn btn-default">Details</button></a>
+                </td>
+            </tr>
+        }
+    </table>
+    <p>
+        <button class="btn btn-default" onclick="window.location.href='/Home/Index'">Back</button>
+    </p>

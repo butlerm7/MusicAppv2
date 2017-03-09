@@ -1,0 +1,40 @@
+@model MusicApp2017.Models.Artist
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/jquery-validation/dist/additional-methods.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+@{
+    ViewData["Title"] = "Edit Artist";
+}
+
+<h2>Edit</h2>
+
+<form asp-controller="Artists" asp-action="Edit" method="post" class="form-horizontal" role="form">
+    <div class="form-horizontal">
+        <div asp-validation-summary="All" class="text-danger">
+            <input type="hidden" asp-for="ArtistID" value="@Model.ArtistID" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Name" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <label asp-for="Bio" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Bio" class="form-control" />
+                <span asp-validation-for="Bio" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+
+                <input type="submit" value="Edit" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+    <h3><font color="red">@ViewBag.Error</font></h3>
+    <p>
+        <button class="btn btn-default" onclick="window.location.href='/Artists/Index'">Back</button>
+    </p>
+</form>
