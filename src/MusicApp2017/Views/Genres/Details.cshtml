@@ -1,0 +1,44 @@
+@model IEnumerable<MusicApp2017.Models.Album>
+
+    @{
+        ViewBag.Title = "Genre Details";
+    }
+
+    <h2>Details</h2>
+
+    <div>
+        <h4>Genre</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Genre.Name):
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.First().Genre.Name)
+            </dd>
+        </dl>
+        <h3>Albums in this Genre</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Artist</th>
+                    <th>Genre</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            @foreach (var album in Model)
+            {
+                <tr>
+                    <td><a href="/Albums/Details/@album.AlbumID">@album.Title</a></td>
+                    <td>@album.Artist.Name</td>
+                    <td>@album.Genre.Name</td>
+                    <td>@album.Price</td>
+                </tr>
+            }
+        </table>
+        <p>
+            <button class="btn btn-default" onclick="window.location.href='/Genres/Index'">Back</button>
+        </p>
+    </div>

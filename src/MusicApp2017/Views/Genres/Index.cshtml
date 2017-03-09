@@ -1,0 +1,25 @@
+@model IEnumerable<MusicApp2017.Models.Genre>
+    @{
+        ViewData["Title"] = "Genres";
+    }
+    <h2>Genre List</h2>
+
+    <button type="button" class="btn btn-primary" onclick="window.location.href='/Genres/Create'"><h5>Create a Genre</h5></button>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+            </tr>
+        </thead>
+        @foreach (var genre in Model)
+        {
+            <tr>
+                <td><a href="/Genres/Details/@genre.GenreID">@genre.Name</a></td>
+            </tr>
+        }
+
+    </table>
+    <p>
+        <button class="btn btn-default" onclick="window.location.href='/Home/Index'">Back</button>
+    </p>
